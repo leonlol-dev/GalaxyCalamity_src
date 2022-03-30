@@ -16,6 +16,7 @@ public class GunV2 : MonoBehaviour
     public int maxAmmo = 10;
     public float reloadTime = 1f;
     public bool automatic = false;
+    public float force = 30f;
 
     [Header("Sound Settings")]
     public AudioClip[] sounds;
@@ -154,6 +155,10 @@ public class GunV2 : MonoBehaviour
                 enemy.takeDamage(damage);
             }
 
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * force);
+            }
             GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impact, 2f);
         }

@@ -10,6 +10,8 @@ public class LaserBullet : MonoBehaviour
     public AudioSource explosionSound;
     public AudioClip explosionClip;
 
+    public float radius = 2f;
+    public float force = 555f;
     private void Start()
     {
         explosionSound = gameObject.GetComponent<AudioSource>();
@@ -44,6 +46,22 @@ public class LaserBullet : MonoBehaviour
         if(collisionExplosion != null)
         {
             GameObject explosion = (GameObject)Instantiate(collisionExplosion, transform.position, transform.rotation);
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+            foreach (Collider objectsNearby in colliders)
+            {
+                Rigidbody rb = objectsNearby.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(force, transform.position, radius);
+                }
+
+                Enemy enemy = objectsNearby.GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    enemy.takeDamage(33f);
+                }
+            }
             Destroy(gameObject);
             Destroy(explosion, 1f);
             
