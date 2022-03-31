@@ -12,7 +12,7 @@ public class StateMachineBehaviour : MonoBehaviour
     {
         get
         {
-            if (StateMachine != null)
+            if (stateMachine != null)
             {
                 return stateMachine;
             }

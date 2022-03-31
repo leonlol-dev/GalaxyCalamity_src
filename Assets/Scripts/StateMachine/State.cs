@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class State : MonoBehaviour, IState
 {
 
-    public List<StateTransition> transitions = new List<StateTransition>();
+    [SerializeField] private List<StateTransition> transitions = new List<StateTransition>();
     public UnityEvent onEnter = new UnityEvent();
     public UnityEvent onExit = new UnityEvent();
 

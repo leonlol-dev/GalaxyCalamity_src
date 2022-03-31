@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 12f;
+    public float maxSpeed = 20f;
     public float upgradeSpeed = 25f;
     public float defaultSpeed = 12f;
     public float gravity = -18.81f;
@@ -30,21 +31,17 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             speed++;
+
+            if(speed >= maxSpeed)
+            {
+                speed = maxSpeed;
+            }
         }
 
         else if(Input.GetKeyUp(KeyCode.Space))
         {
-            //speed = defaultSpeed;
+            speed = defaultSpeed;
 
-            if (windUpgrade)
-            {
-                speed = upgradeSpeed;
-            }
-
-            else
-            {
-                speed = defaultSpeed;
-            }
         }
 
         x = Input.GetAxis("Horizontal");
