@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class TurretIdleState : TurretBaseState
 {
+    Quaternion idlePos;
+    public override void Start(TurretStateMachine turret)
+    {
+        idlePos = turret.transform.rotation;
+    }
+
     public override void EnterState(TurretStateMachine turret)
     {
+
         Debug.Log("TURRET IDLE STATE");
+
+        //Set turret rotation to the idle position.
+        turret.transform.rotation = idlePos;
+
     }
     public override void UpdateState(TurretStateMachine turret)
     {
@@ -14,15 +25,26 @@ public class TurretIdleState : TurretBaseState
     }
     public override void OnCollisionEnter(TurretStateMachine turret, Collider collider)
     {
-        if (collider == null)
-        {
-            return;
-        }
+        
     }
 
     public override void OnTriggerEnter(TurretStateMachine turret, Collider other)
     {
+        
+        if(other.gameObject.tag == "Player")
+        {
+            turret.SwitchState(turret.shootingState);
+        }
+    }
 
+    public override void FixedUpdateState(TurretStateMachine turret)
+    {
+            
+    }
+
+    public override void OnTriggerExit(TurretStateMachine turret, Collider other)
+    {
+       
     }
 
 }
