@@ -8,10 +8,12 @@ public class TurretIdleState : TurretBaseState
     public override void Start(TurretStateMachine turret)
     {
         idlePos = turret.transform.rotation;
+        turret.playerFound = false;
     }
 
     public override void EnterState(TurretStateMachine turret)
     {
+        turret.playerFound = false;
 
         Debug.Log("TURRET IDLE STATE");
 

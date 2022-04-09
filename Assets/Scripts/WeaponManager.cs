@@ -64,7 +64,6 @@ public class WeaponManager : MonoBehaviour
                 weapon.GetComponent<Animator>().CrossFade("New State", 0f);
                 weapon.GetComponent<Animator>().Update(0f);
                 weapon.GetComponent<Animator>().Update(0f);
-                weapon.GetComponent<Animator>().Update(0f);
                 weapon.gameObject.SetActive(false);
             }
 

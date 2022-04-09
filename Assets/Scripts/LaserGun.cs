@@ -59,7 +59,7 @@ public class LaserGun : MonoBehaviour
 
         animator.SetBool("Reloading", false);
 
-        animator.Play("Out", 0, 6f);
+        animator.Play("Out", 0, 1f);
 
         Invoke("turnOffAnimator", 1f);
 
@@ -79,7 +79,6 @@ public class LaserGun : MonoBehaviour
     void Update()
     {
         WeaponSway();
-        Debug.DrawRay(transform.position, fpsCam.transform.forward, Color.green);
 
 
         if (isReloading)
@@ -122,7 +121,6 @@ public class LaserGun : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("reloading");
 
         animator.enabled = true;
         animator.SetBool("Reloading", true);
@@ -130,8 +128,7 @@ public class LaserGun : MonoBehaviour
         currentAmmo = maxAmmo;
 
         animator.SetBool("Reloading", false);
-        animator.SetBool("Reloading", false);
-        Invoke("turnOffAnimator", 0.35f);
+        Invoke("turnOffAnimator", 1f);
         isReloading = false;
     }
     void Shoot()
@@ -186,7 +183,6 @@ public class LaserGun : MonoBehaviour
 
     public void ReloadSound()
     {
-        Debug.Log("reloading sound");
         audiosource.clip = reloadSound;
         audiosource.Play();
     }

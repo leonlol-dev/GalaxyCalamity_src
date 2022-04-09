@@ -13,11 +13,12 @@ public class TurretShootingState : TurretBaseState
     public override void EnterState(TurretStateMachine turret)
     {
         Debug.Log("turret shoot player");
+        turret.playerFound = true;
     }
     public override void UpdateState(TurretStateMachine turret)
     {
         //Attack the player
-        if (Time.time >= nextTimeToFire)
+        if (Time.time >= nextTimeToFire && turret.playerFound)
         {
             nextTimeToFire = Time.time + 1f / turret.attackSpeed;
             Attack(turret);
@@ -40,6 +41,7 @@ public class TurretShootingState : TurretBaseState
     {
         if (other.gameObject.tag == "Player")
         {
+
             turret.SwitchState(turret.idleState);
         }
     }

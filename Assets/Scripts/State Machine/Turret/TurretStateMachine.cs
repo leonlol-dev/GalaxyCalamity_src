@@ -20,6 +20,7 @@ public class TurretStateMachine : MonoBehaviour
     public float bulletRange;
     public float attackSpeed = 2f;
     public int damage;
+    public bool playerFound;
 
     Quaternion idlePos;
 
