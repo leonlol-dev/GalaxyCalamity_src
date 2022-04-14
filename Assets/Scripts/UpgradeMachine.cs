@@ -9,6 +9,7 @@ public class UpgradeMachine : MonoBehaviour
     public GunV2 gun;
     public GunV2 rifle;
     public LaserGun laser;
+    public WeaponManager weaponManager;
     public AudioSource aSource;
     [Space(10)]
 
@@ -42,14 +43,7 @@ public class UpgradeMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Find object via tags
-        //gun = GameObject.FindWithTag("Pistol").GetComponent<GunV2>();
-        //rifle = GameObject.FindWithTag("Rifle").GetComponent<GunV2>();
-        //laser = GameObject.FindWithTag("Laser").GetComponent<LaserGun>();
-
-        //NOTE: Since the weapons are set inactive at the start, you have to set them for each upgrade machine unfortunately.
-
-        
+        // Set Material and Shader 
         mat = new Material(Shader.Find("Shader Graphs/Hologram 2"));
 
         for (int i = 0; i < Rend.Length; i++)
@@ -61,13 +55,13 @@ public class UpgradeMachine : MonoBehaviour
             Rend[i].material.SetFloat("Scroll_Speed", 1f);
         }
 
-        ////Set Material Colour
-        //mat.SetColor("Main_Colour", mainOrb);
-        //mat.SetColor("Fresnel_Colour", fresnelOrb);
-        //mat.SetFloat("Scroll_Speed", 1f);
-
         //Grab audio source
         aSource = this.gameObject.GetComponent<AudioSource>();
+
+        //Get gun scripts
+        gun = weaponManager.transform.GetChild(0).GetComponent<GunV2>();
+        rifle = weaponManager.transform.GetChild(1).GetComponent<GunV2>();
+        laser = weaponManager.transform.GetChild(2).GetComponent<LaserGun>();
     }
 
 
@@ -86,8 +80,6 @@ public class UpgradeMachine : MonoBehaviour
             //Set Material Colour to red.
             for (int i = 0; i < Rend.Length; i++)
             {
-                //Rend[i].material = mat;
-
                 Rend[i].material.SetColor("Main_Colour", Color.red);
                 Rend[i].material.SetColor("Fresnel_Colour", Color.red);
 

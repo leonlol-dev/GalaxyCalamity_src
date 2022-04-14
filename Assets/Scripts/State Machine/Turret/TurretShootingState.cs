@@ -60,13 +60,13 @@ public class TurretShootingState : TurretBaseState
         Rigidbody rb = GameObject.Instantiate(turret.bullet, turret.bulletOrigin.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(turret.gun.transform.forward * 34f, ForceMode.Impulse);
         rb.GetComponent<TurretBullet>().damage = turret.damage;
-        alreadyAttacked = true;
+ 
 
 
 
         GameObject.Destroy(rb, 1.5f);
 
-
+        
 
 
 

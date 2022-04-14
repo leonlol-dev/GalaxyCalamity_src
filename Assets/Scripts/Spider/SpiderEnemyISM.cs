@@ -63,19 +63,14 @@ public class SpiderEnemyISM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange)
-        {
-            Patrolling();
-        }
+        Patrolling();
 
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            ChasePlayer();
-        }
+
+
     }
 
     private void Patrolling()
