@@ -10,13 +10,16 @@ public class FlyingBotChasingState : FlyingBotBaseState
     }
     public override void EnterState(FlyingBotStateMachine fbot)
     {
-
+        fbot.agent.speed = fbot.chasingSpeed;
     }
 
     public override void UpdateState(FlyingBotStateMachine fbot)
     {
+        
         fbot.agent.SetDestination(fbot.player.transform.position);
-        fbot.transform.rotation = Quaternion.LookRotation(fbot.agent.velocity);
+
+        Quaternion rotation = Quaternion.LookRotation(fbot.player.transform.position - fbot.transform.position);
+        fbot.transform.rotation = Quaternion.RotateTowards(fbot.transform.rotation, rotation, Time.deltaTime * fbot.rotationSpeed);
     }
     public override void FixedUpdateState(FlyingBotStateMachine fbot)
     {

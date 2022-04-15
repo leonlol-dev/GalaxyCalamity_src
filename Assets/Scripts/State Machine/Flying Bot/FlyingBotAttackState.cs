@@ -19,7 +19,10 @@ public class FlyingBotAttackState : FlyingBotBaseState
     {
         fbot.agent.SetDestination(fbot.transform.position);
 
-        fbot.transform.LookAt(fbot.player.transform);
+        Quaternion rotation = Quaternion.LookRotation(fbot.player.transform.position - fbot.transform.position);
+        fbot.transform.rotation =  Quaternion.RotateTowards(fbot.transform.rotation, rotation, Time.deltaTime * fbot.rotationSpeed);
+
+        //fbot.transform.LookAt(fbot.player.transform);
 
         //Attack the player
         if (Time.time >= nextTimeToFire)
@@ -48,9 +51,11 @@ public class FlyingBotAttackState : FlyingBotBaseState
     private void Attack(FlyingBotStateMachine fbot)
     {
         Rigidbody rb = GameObject.Instantiate(fbot.projectile, fbot.bulletOrigin.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(fbot.bulletOrigin.transform.forward * 34f, ForceMode.Impulse);
-        rb.AddForce(fbot.bulletOrigin.transform.up * 8f, ForceMode.Impulse);
+        rb.AddForce(fbot.bulletOrigin.transform.forward * fbot.projectileForce, ForceMode.Impulse);
+        rb.AddForce(fbot.bulletOrigin.transform.up * fbot.upTrajectory, ForceMode.Impulse);
 
+        //play sound
+        fbot.zap.Play();
 
         GameObject.Destroy(rb, 1.5f);
 

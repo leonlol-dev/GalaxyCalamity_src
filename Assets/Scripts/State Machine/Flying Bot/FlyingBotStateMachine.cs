@@ -12,39 +12,59 @@ public class FlyingBotStateMachine : MonoBehaviour
     FlyingBotBaseState currentState;
 
     //Variables
+    [Header("Variables to set")]
     public float walkPointRange;
     public float sightRange;
     public float attackRange;
-    public float attackSpeed;
 
+    [Header("Speed")]
+    public float defaultSpeed = 3.5f;
+    public float chasingSpeed = 7f;
+    public float rotationSpeed;
+    
+
+    [Header("Attacking")]
+    public float attackSpeed;
+    public float upTrajectory = 8f;
+    public float projectileForce = 34f;
+    [Space(10)]
+
+    [Header("Game Objects to set")]
     public NavMeshAgent agent;
     public GameObject player;
     public GameObject projectile;
     public GameObject bulletOrigin;
-    public LayerMask whatIsPlayer;
-    
+    public AudioSource zap;
+    [Space(10)]
 
+    [Header("Layer Mask")]
+    public LayerMask whatIsPlayer;
+    [Space(10)]
+    
+    [Header("Debug")]
     public bool playerInSightRange;
     public bool playerInAttackRange;
-
-
-    //flying debugging
     public bool walkPointSet = false;
     public Vector3 walkPoint;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //Find game sources without setting them.
         agent = this.GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        zap = this.GetComponent<AudioSource>();
 
+        //Initalise all starts on states.
+        chasingState.Start(this);
         attackState.Start(this);
         flyingState.Start(this);
 
+        //Set current state to the flying state. 
         currentState = flyingState;
         currentState.EnterState(this);  
 
-
-        
     }
 
     // Update is called once per frame

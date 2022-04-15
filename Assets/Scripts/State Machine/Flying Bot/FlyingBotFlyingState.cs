@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FlyingBotFlyingState : FlyingBotBaseState
 {
-
+    float timeStamp;
+    float resetTimer = 3f;
 
 
 
@@ -14,7 +15,7 @@ public class FlyingBotFlyingState : FlyingBotBaseState
     }
     public override void EnterState(FlyingBotStateMachine fbot)
     {
-
+        fbot.agent.speed = fbot.defaultSpeed;
     }
 
     public override void UpdateState(FlyingBotStateMachine fbot)
@@ -48,7 +49,8 @@ public class FlyingBotFlyingState : FlyingBotBaseState
     {
         if(!fbot.walkPointSet)
         {
-            SearchWalkPoint(fbot);
+            SearchWalkPoint(fbot);            
+            StartTimer();
         }
 
         else
@@ -62,6 +64,14 @@ public class FlyingBotFlyingState : FlyingBotBaseState
         if(distanceToWalkPoint.magnitude < 1f)
         {
             fbot.walkPointSet = false;
+        }
+
+        if(fbot.walkPointSet && timeStamp <= Time.time)
+        {
+            
+            Debug.Log("Bot couldn't get to walk point, setting new walk point.");
+            fbot.walkPointSet = false;
+
         }
     }
 
@@ -78,12 +88,10 @@ public class FlyingBotFlyingState : FlyingBotBaseState
         {
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject);
                 fbot.walkPoint = new Vector3(fbot.transform.position.x + randomX, fbot.transform.position.y, fbot.transform.position.z + randomZ);
             }
         }
-     
-            
+
 
         fbot.walkPointSet = true;
 
@@ -97,6 +105,13 @@ public class FlyingBotFlyingState : FlyingBotBaseState
         //Walkpoint
         Gizmos.DrawSphere(fbot.walkPoint, 1);
         Gizmos.DrawLine(fbot.walkPoint, fbot.transform.position);
+    }
+
+    private void StartTimer()
+    {
+
+        //Time stamp for a timer, if the bot doesn't get to the walkpoint in x seconds, he will search for a new walkpoint.
+        timeStamp = Time.time + resetTimer;
     }
 }
 
