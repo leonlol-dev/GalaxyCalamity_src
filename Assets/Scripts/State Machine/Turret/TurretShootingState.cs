@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TurretShootingState : TurretBaseState
 {
     private bool alreadyAttacked;
     private float nextTimeToFire = 0f;
+    private bool canAttack;
     public override void Start(TurretStateMachine turret)
     {
         alreadyAttacked = false;

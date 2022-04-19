@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float maxHealth = 50f;
     [SerializeField]
-    private float currentHealth;
+    public float currentHealth;
     private int damage = 2;
 
 
@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
+        //if(currentHealth <= 0)
+        //{
+        //    Die();
+        //}
     }
 
     private void Die()

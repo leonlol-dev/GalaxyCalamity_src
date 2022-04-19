@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public abstract class TurretBaseState
 {
     public abstract void Start(TurretStateMachine turret);
