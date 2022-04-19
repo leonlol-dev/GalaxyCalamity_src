@@ -72,8 +72,6 @@ public class FlyingBotStateMachine : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
 
         if (!playerInSightRange && !playerInAttackRange)
@@ -103,6 +101,13 @@ public class FlyingBotStateMachine : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this); 
+    }
+
+    private void FixedUpdate()
+    {
+
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
     }
 
     private void OnDrawGizmosSelected()

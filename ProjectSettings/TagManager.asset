@@ -8,6 +8,8 @@ TagManager:
   - Pistol
   - Rifle
   - Laser
+  - Interactable
+  - UpgradeText
   layers:
   - Default
   - TransparentFX

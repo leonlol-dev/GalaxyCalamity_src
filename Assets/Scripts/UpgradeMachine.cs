@@ -11,6 +11,7 @@ public class UpgradeMachine : MonoBehaviour
     public LaserGun laser;
     public WeaponManager weaponManager;
     public AudioSource aSource;
+    public UpgradeListUI ui;
     [Space(10)]
 
     [Header("Allow Mega Upgrade on this?")]
@@ -32,14 +33,14 @@ public class UpgradeMachine : MonoBehaviour
     [Space(10)]
 
 
-
     //[Header("Materials to Set for Shader Properties Changes")]
     //[Space(3)]
     private Material mat;
     //[Space(10)]
+    [Header("Debug")]
+    public bool opened;
 
-    private bool opened;
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class UpgradeMachine : MonoBehaviour
         for (int i = 0; i < Rend.Length; i++)
         {
             Rend[i].material = mat;
-            
+
             Rend[i].material.SetColor("Main_Colour", mainOrb);
             Rend[i].material.SetColor("Fresnel_Colour", fresnelOrb);
             Rend[i].material.SetFloat("Scroll_Speed", 1f);
@@ -62,10 +63,11 @@ public class UpgradeMachine : MonoBehaviour
         gun = weaponManager.transform.GetChild(0).GetComponent<GunV2>();
         rifle = weaponManager.transform.GetChild(1).GetComponent<GunV2>();
         laser = weaponManager.transform.GetChild(2).GetComponent<LaserGun>();
+
     }
 
 
-     public void ChooseUpgrade()
+    public void ChooseUpgrade()
     {
         if (!opened)
         {
@@ -96,7 +98,7 @@ public class UpgradeMachine : MonoBehaviour
             {
                 //Randomly select a number for upgrade
                 int select = Random.Range(0, 2);
-                switch(select)
+                switch (select)
                 {
                     default:
                         Debug.Log("Upgrade failed, weapon choice went out of bounds!");
@@ -113,7 +115,7 @@ public class UpgradeMachine : MonoBehaviour
                         break;
                 }
             }
-  
+
         }
 
     }
@@ -122,9 +124,9 @@ public class UpgradeMachine : MonoBehaviour
     {
         //Select upgrade int and value int
         int select = Random.Range(0, 4);
-        
 
-        switch(select)
+
+        switch (select)
         {
             default:
                 Debug.Log("Pistol Upgrade fail, went out of bounds");
@@ -134,6 +136,7 @@ public class UpgradeMachine : MonoBehaviour
                 gun.damage += damageValue;
                 string d = gun.damage.ToString();
                 Debug.Log("Pistol Damage upgraded! Damage: " + d);
+                ui.SendMessageToList("Pistol Damage upgraded! Damage: " + d);
                 break;
 
             case 1:
@@ -141,6 +144,7 @@ public class UpgradeMachine : MonoBehaviour
                 gun.fireRate += fireRateValue;
                 string f = gun.fireRate.ToString();
                 Debug.Log("Pistol Fire Rate upgraded! Fire Rate: " + f);
+                ui.SendMessageToList("Pistol Fire Rate upgraded! Fire Rate: " + f);
                 break;
 
             case 2:
@@ -148,6 +152,7 @@ public class UpgradeMachine : MonoBehaviour
                 gun.maxAmmo += ammoValue;
                 string a = gun.maxAmmo.ToString();
                 Debug.Log("Pistol Ammo increased! Ammo: " + a);
+                ui.SendMessageToList("Pistol Ammo increased! Ammo: " + a);
                 break;
 
             case 3:
@@ -155,11 +160,13 @@ public class UpgradeMachine : MonoBehaviour
                 gun.reloadTime -= reloadValue;
                 string r = gun.reloadTime.ToString();
                 Debug.Log("Pistol Reload Time decreased! Reload Time: " + r);
+                ui.SendMessageToList("Pistol Reload Time decreased! Reload Time: " + r);
                 break;
 
             case 4:
                 gun.automatic = true;
                 Debug.Log("Pistol is now automatic!");
+                ui.SendMessageToList("Pistol is now automatic!");
                 break;
 
         }
@@ -179,6 +186,7 @@ public class UpgradeMachine : MonoBehaviour
                 rifle.damage += damageValue;
                 string d = rifle.damage.ToString();
                 Debug.Log("Rifle Damage upgraded! Damage: " + d);
+                ui.SendMessageToList("Rifle Damage upgraded! Damage: " + d);
                 break;
 
             case 1:
@@ -186,6 +194,7 @@ public class UpgradeMachine : MonoBehaviour
                 rifle.maxAmmo += ammoValue;
                 string a = rifle.maxAmmo.ToString();
                 Debug.Log("Rifle Ammo increased! Ammo: " + a);
+                ui.SendMessageToList("Rifle Ammo increased! Ammo: " + a);
                 break;
 
             case 2:
@@ -193,6 +202,7 @@ public class UpgradeMachine : MonoBehaviour
                 rifle.reloadTime -= reloadValue;
                 string r = rifle.reloadTime.ToString();
                 Debug.Log("Rifle Reload Time decreased! Reload Time: " + r);
+                ui.SendMessageToList("Rifle Reload Time decreased! Reload Time: " + r);
                 break;
 
         }
@@ -201,7 +211,7 @@ public class UpgradeMachine : MonoBehaviour
     private void LaserUpgrade()
     {
         int select = Random.Range(0, 3);
-        switch(select)
+        switch (select)
         {
             default:
                 Debug.Log("Laser Gun upgrade fail, went out of bounds");
@@ -212,11 +222,13 @@ public class UpgradeMachine : MonoBehaviour
                 laser.damage += damageValue;
                 string d = laser.damage.ToString();
                 Debug.Log("Laser Gun Damage upgraded! Damage: " + d);
+                ui.SendMessageToList("Laser Gun Damage upgraded! Damage: " + d);
                 break;
 
             case 1:
                 laser.automatic = true;
                 Debug.Log("Laser Gun is now automatic!");
+                ui.SendMessageToList("Laser Gun is now automatic!");
                 break;
 
             case 2:
@@ -224,6 +236,7 @@ public class UpgradeMachine : MonoBehaviour
                 laser.maxAmmo += ammoValue;
                 string a = laser.maxAmmo.ToString();
                 Debug.Log("Laser Gun Ammo increased! Ammo: " + a);
+                ui.SendMessageToList("Laser Gun Ammo increased! Ammo: " + a);
                 break;
 
             case 3:
@@ -231,9 +244,11 @@ public class UpgradeMachine : MonoBehaviour
                 laser.reloadTime -= reloadValue;
                 string r = laser.reloadTime.ToString();
                 Debug.Log("Laser Gun Reload Time decreased! Reload Time: " + r);
+                ui.SendMessageToList("Laser Gun Reload Time decreased! Reload Time: " + r);
                 break;
 
 
         }
     }
+
 }
