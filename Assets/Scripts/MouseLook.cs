@@ -23,6 +23,11 @@ public class MouseLook : MonoBehaviour
        
         playerBody.Rotate(Vector3.up * mouseX);
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
     }
 
     private void FixedUpdate()

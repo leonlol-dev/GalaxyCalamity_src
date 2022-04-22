@@ -16,6 +16,7 @@ public class TurretBullet : MonoBehaviour
     private void Start()
     {
         explosionSound = gameObject.GetComponent<AudioSource>();
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame

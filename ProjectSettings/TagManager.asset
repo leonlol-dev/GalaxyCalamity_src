@@ -10,6 +10,7 @@ TagManager:
   - Laser
   - Interactable
   - UpgradeText
+  - Door
   layers:
   - Default
   - TransparentFX

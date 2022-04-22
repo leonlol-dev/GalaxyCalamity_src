@@ -47,7 +47,7 @@ public class TurretShootingState : TurretBaseState
             turret.SwitchState(turret.idleState);
         }
     }
-
+        
     public override void FixedUpdateState(TurretStateMachine turret)
     {
         Quaternion rotation = Quaternion.LookRotation(turret.player.transform.position - turret.gun.transform.position);
@@ -58,7 +58,7 @@ public class TurretShootingState : TurretBaseState
 
     private void Attack(TurretStateMachine turret)
     {
-
+        turret.shootSound.Play();
         Rigidbody rb = GameObject.Instantiate(turret.bullet, turret.bulletOrigin.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(turret.gun.transform.forward * 34f, ForceMode.Impulse);
         rb.GetComponent<TurretBullet>().damage = turret.damage;

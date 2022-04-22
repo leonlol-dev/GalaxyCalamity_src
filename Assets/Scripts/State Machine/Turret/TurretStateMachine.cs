@@ -23,6 +23,7 @@ public class TurretStateMachine : MonoBehaviour
     public GameObject explosion;
     public Transform gun;
     public AudioSource deathSound;
+    public AudioSource shootSound;
 
     // ------------------------
 

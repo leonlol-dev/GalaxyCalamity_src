@@ -12,6 +12,8 @@ public class FlyBotStateMachineScripted : MonoBehaviour
 
     FlyBotBaseState currentState;
 
+    private Enemy fEnemy;
+
     //Variables to set.
     [Header("Variables to set")]
     public float attackRange;
@@ -37,6 +39,10 @@ public class FlyBotStateMachineScripted : MonoBehaviour
     public Transform[] waypoints;
     public GameObject projectile;
     public GameObject bulletOrigin;
+    public GameObject explosion;
+    public AudioSource zap;
+    public AudioSource deathSound;
+    
 
     [Space(10)]
 
@@ -44,7 +50,7 @@ public class FlyBotStateMachineScripted : MonoBehaviour
     [Header("Game Objects not needed to be set.")]
     public NavMeshAgent agent;
     public GameObject player;
-    public AudioSource zap;
+
 
     [Space(10)]
 
@@ -65,7 +71,8 @@ public class FlyBotStateMachineScripted : MonoBehaviour
         //Find game objects without setting them.
         agent = this.GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
-        zap = this.GetComponent<AudioSource>();
+        fEnemy = this.GetComponent<Enemy>();
+        
 
         patrolState.Start(this);
         chaseState.Start(this);
@@ -95,8 +102,11 @@ public class FlyBotStateMachineScripted : MonoBehaviour
             SwitchState(attackState);
         }
 
-       
-        
+        if (fEnemy.currentHealth <= 0)
+        {
+            Death();
+        }
+
     }
 
     public void SwitchState(FlyBotBaseState state)
@@ -121,6 +131,21 @@ public class FlyBotStateMachineScripted : MonoBehaviour
 
         //Walkpoint
         Gizmos.DrawLine(waypoints[patrolState.waypointIndex].position, transform.position);
+
+    }
+
+
+    void Death()
+    {
+        bool exploded = false;
+        deathSound.Play();
+        Destroy(gameObject);
+
+        if (!exploded)
+        {
+            GameObject iExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+            GameObject.Destroy(iExplosion, 1.5f);
+        }
 
     }
 }

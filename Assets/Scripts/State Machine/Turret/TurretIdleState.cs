@@ -15,7 +15,7 @@ public class TurretIdleState : TurretBaseState
     {
         turret.playerFound = false;
 
-        Debug.Log("TURRET IDLE STATE");
+        //Debug.Log("TURRET IDLE STATE");
 
         //Set turret rotation to the idle position.
         turret.transform.rotation = idlePos;

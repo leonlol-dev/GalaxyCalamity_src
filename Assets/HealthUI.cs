@@ -12,8 +12,7 @@ public class HealthUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = gameObject.GetComponent<TextMeshProUGUI>();
-        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
