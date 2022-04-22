@@ -9,7 +9,7 @@ public class GunV2 : MonoBehaviour
     public float smoothness;
 
     [Header("Gun Settings")]
-    public float damage = 10f;
+    public int damage = 10;
     public float range = 100f;
     public float spread = 0.2f;
     public float fireRate = 15f;

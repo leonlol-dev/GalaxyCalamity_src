@@ -59,7 +59,7 @@ public class LaserBullet : MonoBehaviour
                 Enemy enemy = objectsNearby.GetComponent<Enemy>();
                 if(enemy != null)
                 {
-                    enemy.takeDamage(33f);
+                    enemy.takeDamage(33);
                 }
             }
             Destroy(gameObject);
