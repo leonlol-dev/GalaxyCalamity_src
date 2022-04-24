@@ -8,6 +8,7 @@ public class DoorConsole : MonoBehaviour
     public DoorClose oDoor;
     public bool action;
 
+    public bool bossDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,10 @@ public class DoorConsole : MonoBehaviour
 
     public void TimeForAction()
     {
-        action = true; 
+
+        action = true;
         cDoor.openDoor = true;
         oDoor.closeDoor = true;
+
     }
 }

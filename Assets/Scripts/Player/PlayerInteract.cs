@@ -41,7 +41,7 @@ public class PlayerInteract : MonoBehaviour
         RaycastHit interact;
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out interact, textRange))
         {
-            if (interact.collider.gameObject.tag == "Interactable" && !interact.collider.gameObject.GetComponent<UpgradeMachine>().opened || interact.collider.gameObject.tag == "Door" && !interact.collider.gameObject.GetComponent<DoorConsole>().action)
+            if (interact.collider.gameObject.tag == "Interactable" && !interact.collider.gameObject.GetComponent<UpgradeMachine>().opened || interact.collider.gameObject.tag == "Door"/* && !interact.collider.gameObject.GetComponent<DoorConsole>().action*/)
             {
                 text.SetActive(true);
             }
@@ -71,6 +71,14 @@ public class PlayerInteract : MonoBehaviour
             {
                 doorConsole.TimeForAction();
             }
+
+            Room4Console bossConsole = hit.transform.GetComponent<Room4Console>();
+            if(bossConsole != null)
+            {
+                bossConsole.BossCutscene();
+            }
+
+
         }
         
 
