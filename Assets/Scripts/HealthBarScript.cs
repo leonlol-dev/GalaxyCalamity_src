@@ -17,7 +17,7 @@ public class HealthBarScript : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        slider.value = health;
+        slider.value = health ;
         text.text = "HP: " + health;
     }
 

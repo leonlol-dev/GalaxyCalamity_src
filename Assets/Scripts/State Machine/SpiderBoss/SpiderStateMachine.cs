@@ -19,6 +19,9 @@ public class SpiderStateMachine : MonoBehaviour
     public NavMeshAgent agent;
     public LayerMask ground, whatIsPlayer;
     public float rotationSpeed = 50f;
+    public SpiderGun gun;
+    public ParticleSystem fire;
+    public AudioSource fireSound;
 
     [Header("Rig")]
     public GameObject rig;
@@ -45,6 +48,7 @@ public class SpiderStateMachine : MonoBehaviour
     public bool playerInSightRange;
     public bool playerInAttackRange;
     public bool walkPointSet = false;
+    public bool angry = false;
     public Vector3 walkPoint;
 
     //Health
@@ -73,6 +77,38 @@ public class SpiderStateMachine : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
+
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            SwitchState(wanderState);
+
+        }
+
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            SwitchState(chaseState);
+        }
+
+        if (playerInAttackRange)
+        {
+            SwitchState(attackState);
+        }
+
+        //When HP gets to 75%
+        if(me.currentHealth <= me.maxHealth / 1.35)
+        {
+            angry = true;
+            chaseAcceleration = 25f;
+            chaseSpeed = 25f;
+        }
+
+        //When HP gets to 50%
+        if (me.currentHealth <= me.maxHealth / 2)
+        {
+            angry = true;
+            chaseAcceleration = 44f;
+            chaseSpeed = 44f;
+        }
     }
 
     private void FixedUpdate()
@@ -92,5 +128,24 @@ public class SpiderStateMachine : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+
+        //Walkpoint
+        Gizmos.DrawSphere(walkPoint, 1);
+        Gizmos.DrawLine(walkPoint, transform.position);
+    }
+
+    public void StopEffects()
+    {
+        fire.Stop();
+        fireSound.Stop();
+        player.GetComponent<PlayerMovement>().speed = player.GetComponent<PlayerMovement>().defaultSpeed;
     }
 }
