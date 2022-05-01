@@ -31,6 +31,12 @@ public class RouteBotAttacking : RouteBotElectricBaseState
             rbot.player.GetComponent<PlayerHealth>().currentHealth -= rbot.damage;
 
         }
+
+        if (!rbot.playerInSightRange && !rbot.playerInAttackRange)
+        {
+            rbot.SwitchState(rbot.patrolState);
+        }
+
     }
 
     private void Electrify(RouteBotElectricStateMachine rbot)

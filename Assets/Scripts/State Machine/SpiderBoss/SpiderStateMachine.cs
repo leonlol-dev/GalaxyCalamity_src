@@ -23,6 +23,9 @@ public class SpiderStateMachine : MonoBehaviour
     public ParticleSystem fire;
     public AudioSource fireSound;
 
+    public GameObject explosion;
+    public AudioSource explosionSound;
+
     [Header("Rig")]
     public GameObject rig;
     public float rigUpAmount;
@@ -109,6 +112,11 @@ public class SpiderStateMachine : MonoBehaviour
             chaseAcceleration = 44f;
             chaseSpeed = 44f;
         }
+
+        if (me.currentHealth <= 0)
+        {
+            Death();
+        }
     }
 
     private void FixedUpdate()
@@ -147,5 +155,18 @@ public class SpiderStateMachine : MonoBehaviour
         fire.Stop();
         fireSound.Stop();
         player.GetComponent<PlayerMovement>().speed = player.GetComponent<PlayerMovement>().defaultSpeed;
+    }
+
+    private void Death()
+    {
+        bool exploded = false;
+        explosionSound.Play();
+        Destroy(gameObject);
+
+        if (!exploded)
+        {
+            GameObject iExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+            GameObject.Destroy(iExplosion, 1.5f);
+        }
     }
 }

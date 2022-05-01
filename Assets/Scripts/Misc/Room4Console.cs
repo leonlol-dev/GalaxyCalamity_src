@@ -6,7 +6,6 @@ public class Room4Console : MonoBehaviour
 {
     public GameObject player;
     public GameObject cutsceneCam;
-    public GameObject playerCam;
     public Transform teleportLoc;
 
     public float time = 3f;

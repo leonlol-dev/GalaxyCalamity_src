@@ -14,28 +14,32 @@ public class WormStateMachine : MonoBehaviour
 
     [HideInInspector]
     public Transform player;
+    [HideInInspector]
+    public Enemy me;
 
     [Header("Game Objects")]
     public CinemachineSmoothPath path;
     public CinemachineDollyCart cart;
+    public GameObject explosion;
+    public AudioSource explosionSound;
 
     [Header("Variables")]
-    public float walkPointRange;
     public float sightRange;
-    public float attackRange;
-
     public float wanderRange = 2.3f;
-    public int damage;
+    public int damage = 1;
     public float damageTick = 1f;
     public float startPosValue = 15f;
     public float endPosValue = 7f;
 
+    [Header("Player layer")]
+    public LayerMask whatIsPlayer;
+
     [Header("Debug")]
     public Vector3 startPosition;
     public Vector3 endPosition;
+    public bool playerInSight;
 
-
-    private Enemy me;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +61,16 @@ public class WormStateMachine : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
+
+        if (playerInSight)
+        {
+            SwitchState(interceptState);
+        }
+
+        if (me.currentHealth <= 0)
+        {
+            Death();
+        }
         
     }
 
@@ -67,7 +81,10 @@ public class WormStateMachine : MonoBehaviour
     }
 
 
-
+    private void FixedUpdate()
+    {
+        playerInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -77,8 +94,22 @@ public class WormStateMachine : MonoBehaviour
 
     }
 
+    //Since my states are not of monobehaviour class, I have to create a function to allow my states to use StartCoroutine.
     public void StartChildCoroutine(IEnumerator coroutine)
     {
         StartCoroutine(coroutine);
+    }
+
+    private void Death()
+    {
+        bool exploded = false;
+        explosionSound.Play();
+        Destroy(gameObject);
+
+        if (!exploded)
+        {
+            GameObject iExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+            GameObject.Destroy(iExplosion, 1.5f);
+        }
     }
 }

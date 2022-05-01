@@ -29,6 +29,18 @@ public class RouteBotPatrollingState : RouteBotElectricBaseState
             IncreaseIndex(rbot);
         }
         Patrol(rbot);
+
+        //If player is in sight range and not in attack range.
+        if (rbot.playerInSightRange && !rbot.playerInAttackRange)
+        {
+            rbot.SwitchState(rbot.chasingState);
+        }
+
+        //If the player shoots at the bot.
+        if (rbot.fEnemy.currentHealth < rbot.fEnemy.maxHealth)
+        {
+            rbot.SwitchState(rbot.chasingState);
+        }
     }
 
     void Patrol(RouteBotElectricStateMachine rbot)

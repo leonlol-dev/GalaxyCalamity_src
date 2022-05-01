@@ -12,7 +12,7 @@ public class RouteBotElectricStateMachine : MonoBehaviour
 
     RouteBotElectricBaseState currentState;
 
-    private Enemy fEnemy;
+    public Enemy fEnemy;
 
     //Variables to set.
     [Header("Variables to set")]
@@ -87,16 +87,6 @@ public class RouteBotElectricStateMachine : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-
-        if (!playerInSightRange && !playerInAttackRange)
-        {
-            SwitchState(patrolState);
-        }
-
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            SwitchState(chasingState);
-        }
 
 
         if (playerInAttackRange && playerInSightRange)

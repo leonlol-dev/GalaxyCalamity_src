@@ -33,6 +33,7 @@ public class WormWander : WormBaseState
 
     public void FindPath(WormStateMachine worm)
     {
+
         Vector3 randomRange = Random.insideUnitSphere * worm.wanderRange;
         Debug.Log(randomRange);
         randomRange.y = 0;
@@ -66,7 +67,7 @@ public class WormWander : WormBaseState
             {
                 //Wait til the position is nearly finished then wait for a little bit then find another path.
                 yield return new WaitUntil(() => worm.cart.m_Position >= 0.99f);
-                yield return new WaitForSeconds(Random.Range(1, 2));
+                //yield return new WaitForSeconds(Random.Range(1, 2));
 
                 FindPath(worm);
                 yield return new WaitUntil(() => worm.cart.m_Position >= 0.05f);

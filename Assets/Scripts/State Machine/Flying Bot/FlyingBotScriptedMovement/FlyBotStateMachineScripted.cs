@@ -12,7 +12,7 @@ public class FlyBotStateMachineScripted : MonoBehaviour
 
     FlyBotBaseState currentState;
 
-    private Enemy fEnemy;
+    
 
     //Variables to set.
     [Header("Variables to set")]
@@ -50,7 +50,7 @@ public class FlyBotStateMachineScripted : MonoBehaviour
     [Header("Game Objects not needed to be set.")]
     public NavMeshAgent agent;
     public GameObject player;
-
+    public Enemy fEnemy;
 
     [Space(10)]
 
@@ -87,15 +87,7 @@ public class FlyBotStateMachineScripted : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if(!playerInSightRange && !playerInAttackRange)
-        {
-            SwitchState(patrolState);
-        }
-
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            SwitchState(chaseState);
-        }
+   
 
         if(playerInAttackRange && playerInSightRange)
         {

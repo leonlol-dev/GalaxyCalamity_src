@@ -28,6 +28,18 @@ public class FlyBotPatrol : FlyBotBaseState
             IncreaseIndex(fbot);
         }
         Patrol(fbot);
+
+        //If player is in sight range and not in attack range.
+        if (fbot.playerInSightRange && !fbot.playerInAttackRange)
+        {
+            fbot.SwitchState(fbot.chaseState);
+        }
+
+        //If the player shoots at the bot.
+        if (fbot.fEnemy.currentHealth < fbot.fEnemy.maxHealth)
+        {
+            fbot.SwitchState(fbot.chaseState);
+        }    
     }
     public override void FixedUpdateState(FlyBotStateMachineScripted fbot)
     {

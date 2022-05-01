@@ -30,6 +30,12 @@ public class FlyBotAttack : FlyBotBaseState
             nextTimeToFire = Time.time + 1f / fbot.attackSpeed;
             Attack(fbot);
         }
+
+        if (!fbot.playerInSightRange && !fbot.playerInAttackRange)
+        {
+            fbot.SwitchState(fbot.patrolState);
+        }
+
     }
     public override void FixedUpdateState(FlyBotStateMachineScripted fbot)
     {
