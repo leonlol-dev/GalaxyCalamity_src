@@ -12,6 +12,9 @@ public class Grenade : MonoBehaviour
     public GameObject explosionEffect;
     public AudioSource audiosource;
     public AudioClip[] explosionSound;
+    public float radius = 7f;
+    public float force = 250f;
+    public int damage = 1;
     public int explosionSoundChoice;
 
     // Start is called before the first frame update
@@ -36,7 +39,23 @@ public class Grenade : MonoBehaviour
     void explode()
     {
         //Instantiate the particle effect.
-        GameObject particles = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
+        GameObject explosion = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (Collider objectsNearby in colliders)
+        {
+            Rigidbody rb = objectsNearby.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddExplosionForce(force, transform.position, radius);
+            }
+
+            PlayerHealth player = objectsNearby.GetComponent<PlayerHealth>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
+        }
 
         //Chooses a random explosion sound and plays it.
         randomSoundSelector();
@@ -45,7 +64,7 @@ public class Grenade : MonoBehaviour
         Destroy(gameObject, 1f);
 
         //Destroy particle system
-        Destroy(particles, 2.25f);
+        Destroy(explosion, 2.25f);
     }
 
     void randomSoundSelector()
