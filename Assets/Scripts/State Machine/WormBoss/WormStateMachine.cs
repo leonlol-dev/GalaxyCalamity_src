@@ -62,10 +62,6 @@ public class WormStateMachine : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if (playerInSight)
-        {
-            SwitchState(interceptState);
-        }
 
         if (me.currentHealth <= 0)
         {

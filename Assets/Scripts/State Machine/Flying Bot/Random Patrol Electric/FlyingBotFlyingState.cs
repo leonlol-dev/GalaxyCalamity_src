@@ -27,11 +27,7 @@ public class FlyingBotFlyingState : FlyingBotBaseState
         Debug.Log("patrolling updates");
         Patrolling(fbot);
 
-        //If player is in sight range and not in attack range.
-        if (fbot.playerInSightRange && !fbot.playerInAttackRange)
-        {
-            fbot.SwitchState(fbot.chasingState);
-        }
+    
 
         //If the player shoots at the bot.
         if (fbot.fEnemy.currentHealth < fbot.fEnemy.maxHealth)

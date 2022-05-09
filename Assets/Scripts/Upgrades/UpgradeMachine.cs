@@ -131,7 +131,7 @@ public class UpgradeMachine : MonoBehaviour
                 Debug.Log("Pistol Upgrade fail, went out of bounds");
                 break;
             case 0:
-                int damageValue = Random.Range(0, 12);
+                int damageValue = Random.Range(1, 12);
                 gun.damage += damageValue;
                 string d = gun.damage.ToString();
                 Debug.Log("Pistol Damage upgraded! Damage: " + d);
@@ -139,7 +139,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 1:
-                int fireRateValue = Random.Range(0, 100);
+                int fireRateValue = Random.Range(1, 100);
                 gun.fireRate += fireRateValue;
                 string f = gun.fireRate.ToString();
                 Debug.Log("Pistol Fire Rate upgraded! Fire Rate: " + f);
@@ -147,7 +147,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 2:
-                int ammoValue = Random.Range(0, 10);
+                int ammoValue = Random.Range(1, 10);
                 gun.maxAmmo += ammoValue;
                 string a = gun.maxAmmo.ToString();
                 Debug.Log("Pistol Ammo increased! Ammo: " + a);
@@ -155,7 +155,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 3:
-                float reloadValue = Random.Range(0, 1);
+                float reloadValue = Random.Range(0.1f, 1);
                 gun.reloadTime -= reloadValue;
                 string r = gun.reloadTime.ToString();
                 Debug.Log("Pistol Reload Time decreased! Reload Time: " + r);
@@ -181,7 +181,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 0:
-                int damageValue = Random.Range(0, 12);
+                int damageValue = Random.Range(1, 12);
                 rifle.damage += damageValue;
                 string d = rifle.damage.ToString();
                 Debug.Log("Rifle Damage upgraded! Damage: " + d);
@@ -189,7 +189,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 1:
-                int ammoValue = Random.Range(0, 10);
+                int ammoValue = Random.Range(1, 10);
                 rifle.maxAmmo += ammoValue;
                 string a = rifle.maxAmmo.ToString();
                 Debug.Log("Rifle Ammo increased! Ammo: " + a);
@@ -197,7 +197,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 2:
-                float reloadValue = Random.Range(0, 1);
+                float reloadValue = Random.Range(0.1f, 1);
                 rifle.reloadTime -= reloadValue;
                 string r = rifle.reloadTime.ToString();
                 Debug.Log("Rifle Reload Time decreased! Reload Time: " + r);
@@ -217,7 +217,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 0:
-                int damageValue = Random.Range(0, 20);
+                int damageValue = Random.Range(1, 20);
                 laser.damage += damageValue;
                 string d = laser.damage.ToString();
                 Debug.Log("Laser Gun Damage upgraded! Damage: " + d);
@@ -231,7 +231,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 2:
-                int ammoValue = Random.Range(0, 10);
+                int ammoValue = Random.Range(1, 10);
                 laser.maxAmmo += ammoValue;
                 string a = laser.maxAmmo.ToString();
                 Debug.Log("Laser Gun Ammo increased! Ammo: " + a);
@@ -239,7 +239,7 @@ public class UpgradeMachine : MonoBehaviour
                 break;
 
             case 3:
-                float reloadValue = Random.Range(0, 1);
+                float reloadValue = Random.Range(0.1f, 1);
                 laser.reloadTime -= reloadValue;
                 string r = laser.reloadTime.ToString();
                 Debug.Log("Laser Gun Reload Time decreased! Reload Time: " + r);

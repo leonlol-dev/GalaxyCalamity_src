@@ -27,8 +27,6 @@ public class SpiderConstraint : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Need to make states at some point
-
         distanceToMoveCube = Vector3.Distance(transform.position, moveCube.transform.position);
         if ((distanceToMoveCube >= targetDistance && !oppositeLeg.isItMoving()) || moving)
         {

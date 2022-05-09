@@ -41,8 +41,11 @@ public class TurretShootingState : TurretBaseState
 
     public override void OnTriggerExit(TurretStateMachine turret, Collider other)
     {
-         turret.SwitchState(turret.idleState);
-        
+
+        if (other.gameObject.tag == "Player")
+        {
+            turret.SwitchState(turret.idleState);
+        }
     }
         
     public override void FixedUpdateState(TurretStateMachine turret)

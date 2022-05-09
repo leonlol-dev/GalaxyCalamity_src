@@ -89,6 +89,12 @@ public class FlyingBotStateMachine : MonoBehaviour
 
         }
 
+        //If player is in sight range and not in attack range.
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            SwitchState(chasingState);
+        }
+
         if (playerInAttackRange && playerInSightRange)
         {
             SwitchState(attackState);
