@@ -125,7 +125,7 @@ public class GunV2 : MonoBehaviour
         currentAmmo = maxAmmo;
 
         animator.SetBool("Reloading", false);
-        Invoke("turnOffAnimator", 0.66f);
+        Invoke("turnOffAnimator", 0.25f);
         isReloading = false;
     }
     void Shoot()

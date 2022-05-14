@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Simple Enemy script that hold the enemy healthbar and hits the player if they get too close.
+
 public class Enemy : MonoBehaviour
 {
     public int maxHealth = 50;
@@ -30,21 +32,21 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("player hit");
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        Debug.Log("player hit");
+    //        collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+    //    }
+    //}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("player hit");
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        Debug.Log("player hit");
+    //        other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+    //    }
+    //}
 }

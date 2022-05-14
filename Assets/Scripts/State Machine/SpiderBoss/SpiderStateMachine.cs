@@ -81,17 +81,13 @@ public class SpiderStateMachine : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if (!playerInSightRange && !playerInAttackRange)
-        {
-            SwitchState(wanderState);
-
-        }
-
+        //Checks if the player is in sight, if so move to chase state.
         if (playerInSightRange && !playerInAttackRange)
         {
             SwitchState(chaseState);
         }
 
+        //If player is in attack range, start attacking.
         if (playerInAttackRange)
         {
             SwitchState(attackState);
@@ -109,8 +105,8 @@ public class SpiderStateMachine : MonoBehaviour
         if (me.currentHealth <= me.maxHealth / 2)
         {
             angry = true;
-            chaseAcceleration = 44f;
-            chaseSpeed = 44f;
+            chaseAcceleration = 50f;
+            chaseSpeed = 50f;
         }
 
         if (me.currentHealth <= 0)

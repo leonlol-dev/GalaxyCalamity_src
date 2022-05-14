@@ -70,8 +70,7 @@ public class SpiderGun : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Quaternion rotation = Quaternion.LookRotation(bulletOrigin.transform.position - player.transform.position);
-        gun.rotation = Quaternion.RotateTowards(gun.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+        Quaternion rotation = Quaternion.LookRotation(bulletOrigin.transform.position - player.transform.position);        gun.rotation = Quaternion.RotateTowards(gun.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
        
         

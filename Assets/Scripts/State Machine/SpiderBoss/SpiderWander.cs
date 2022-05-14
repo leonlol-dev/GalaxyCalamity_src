@@ -17,7 +17,15 @@ public class SpiderWander : SpiderBaseState
 
     public override void UpdateState(SpiderStateMachine spider)
     {
+ 
         Patrolling(spider);
+
+        //Checks if the player has done damage, if so move to chase state.
+        if(spider.GetComponent<Enemy>().currentHealth < spider.GetComponent<Enemy>().maxHealth)
+        {
+            spider.SwitchState(spider.chaseState);
+        }
+
     }
 
     public override void FixedUpdateState(SpiderStateMachine spider)
@@ -61,7 +69,7 @@ public class SpiderWander : SpiderBaseState
 
         walkPoint = new Vector3(spider.transform.position.x + randomX, spider.transform.position.y, spider.transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, -spider.transform.up, 2f, spider.ground))
+        if (Physics.Raycast(walkPoint, -spider.transform.up, 2f, spider.ground))
         {
             spider.walkPointSet = true;
         }
