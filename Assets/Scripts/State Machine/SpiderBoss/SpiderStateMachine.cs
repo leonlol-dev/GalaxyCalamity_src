@@ -25,6 +25,7 @@ public class SpiderStateMachine : MonoBehaviour
 
     public GameObject explosion;
     public AudioSource explosionSound;
+    public GameManager gameManager;
 
     [Header("Rig")]
     public GameObject rig;
@@ -155,6 +156,7 @@ public class SpiderStateMachine : MonoBehaviour
 
     private void Death()
     {
+        gameManager.spiderBossKilled = true;
         bool exploded = false;
         explosionSound.Play();
         Destroy(gameObject);

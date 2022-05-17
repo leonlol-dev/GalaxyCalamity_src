@@ -22,6 +22,7 @@ public class WormStateMachine : MonoBehaviour
     public CinemachineDollyCart cart;
     public GameObject explosion;
     public AudioSource explosionSound;
+    public GameManager gameManager;
 
     [Header("Variables")]
     public float sightRange;
@@ -98,6 +99,7 @@ public class WormStateMachine : MonoBehaviour
 
     private void Death()
     {
+        gameManager.wormBossKilled = true;
         bool exploded = false;
         explosionSound.Play();
         Destroy(gameObject);
