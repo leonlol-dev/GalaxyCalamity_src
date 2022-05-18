@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpiderGun : MonoBehaviour
 {
+    //This script controls the gun mounted on the top of the spider.
+
     [HideInInspector]
     public GameObject player;
 
@@ -35,6 +37,7 @@ public class SpiderGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This draws a line if a raycast is aimed at the player.
         RaycastHit hit;
         Debug.DrawRay(bulletOrigin.transform.position, bulletOrigin.transform.forward * range, Color.yellow);
         if (Physics.Raycast(bulletOrigin.transform.position, bulletOrigin.transform.forward, out hit, range))
@@ -76,6 +79,7 @@ public class SpiderGun : MonoBehaviour
         
     }
 
+    //Attacks by instantiating enemy bullets towards the player with force.
     void Attack()
     {
         shootSound.Play();

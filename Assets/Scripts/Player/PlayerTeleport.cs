@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerTeleport : MonoBehaviour
 {
+    //This is the teleport script.
+
     private RaycastHit lastRaycastHit;
     public bool cantTeleport;
 
@@ -43,6 +45,7 @@ public class PlayerTeleport : MonoBehaviour
 
         else
         {
+            //This sets the indicator to a place to where the player can't see, disabling the game object will break the code.
             teleportIndicator.transform.position = transform.TransformPoint(2, 0, 0);
         }
 
@@ -78,6 +81,7 @@ public class PlayerTeleport : MonoBehaviour
         
     }
 
+    //This checks if the player is looking at a object within range, this returns a game object. 
     private GameObject getObject()
     {
         Vector3 origin = transform.position;
@@ -95,6 +99,7 @@ public class PlayerTeleport : MonoBehaviour
         
     }
 
+    //This teleports the player to whatever they are looking at.
     private void teleportToLookAt()
     {
         player.enabled = false;
@@ -104,6 +109,7 @@ public class PlayerTeleport : MonoBehaviour
         teleportSFX.Play();
     }
 
+    //Teleport cooldown 
     IEnumerator teleportCooldown(float coolDownDuration)
     {
         yield return new WaitForSeconds(coolDownDuration);
@@ -112,6 +118,7 @@ public class PlayerTeleport : MonoBehaviour
 
     }
 
+    //To show particle effects after a certain amount of time.
     IEnumerator teleportParticles()
     {
         //set active

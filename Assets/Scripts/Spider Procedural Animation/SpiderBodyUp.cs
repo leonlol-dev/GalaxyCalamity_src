@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpiderBodyUp : MonoBehaviour
 {
+    //THIS IS NOT USED WITHIN THE GAME.
     [SerializeField]
     private int layerMask;
     public GameObject raycastOrigin;

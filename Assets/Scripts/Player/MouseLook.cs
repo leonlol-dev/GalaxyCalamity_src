@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    //This script gets mouse information and uses to move the first person camera. 
+
     public float mouseSens = 100f;
 
     public Transform playerBody;

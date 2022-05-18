@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class joint for the inverse kinematics manager.
 public class Joint : MonoBehaviour
 {
     public Joint child;

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
-{
+{   
+    //A very simple player health script.
+
     public int maxHealth = 100;
     public int currentHealth;
     public GameManager manager;

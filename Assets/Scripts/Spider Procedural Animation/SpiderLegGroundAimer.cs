@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpiderLegGroundAimer : MonoBehaviour
 {
+    //This script shoots raycasts to check to see whether the spider needs to go up or down terrain.
+
     [SerializeField]
     private int layerMask;
     public GameObject raycastOrigin;

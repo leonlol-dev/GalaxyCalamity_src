@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IKManager : MonoBehaviour
 {
+    //This is the inverse kinematic solution using the gradient descent method. However this was only meant for 2D implementation, it simulates robotic movement for arms.
     public Joint root;
     public Joint end;
 
@@ -39,6 +40,7 @@ public class IKManager : MonoBehaviour
         return Vector3.Distance(_point1, _point2);
     }
 
+    //Gradient descent method
     float calculateSlope(Joint _joint)
     {
         float deltaTheta = 0.01f;

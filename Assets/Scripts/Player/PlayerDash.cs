@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    //This is the dash script, it gets the direction of the camera's forward and will teleport the player.
     public PlayerMovement movementScript;
     public Camera cam;
     public float dashSpeed;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretBullet : MonoBehaviour
 {
+    //This is the turret's bullet script.
     public float projectileSpeed = 5f;
     public Vector3 target;
     public GameObject collisionExplosion;
@@ -43,6 +44,8 @@ public class TurretBullet : MonoBehaviour
         target = _target;
     }
 
+    //The explosion works by creating a collider sphere, if this invisible sphere collides with any objects, it will put it in an array. If the player is a part of the array then they will take damage 
+    //and if any colliders are in the array then they will force will be applied.
     void explode()
     {
         if (collisionExplosion != null)

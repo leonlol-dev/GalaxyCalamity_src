@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpiderBodyController : MonoBehaviour
 {
-    
+    //THIS ISN'T USED IN THE CURRENT VERSION OF THE SPIDER.
+
     public GameObject[] legTargets; //The tips of the legs
     public Vector3 lastBodyUp;
     public float smoothness = 8f; //Smoothness of the movement of the body 

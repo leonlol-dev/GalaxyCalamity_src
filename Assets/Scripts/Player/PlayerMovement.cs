@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //This script controls the player's movements using the character controller component. The player movement also uses the freefall equation.
+
     public float speed = 12f;
     public float maxSpeed = 20f;
     public float upgradeSpeed = 25f;

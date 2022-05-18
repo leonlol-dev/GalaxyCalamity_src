@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpiderConstraint : MonoBehaviour
 {
+    //This controls the legs of the spider, these are the constraints of the legs.
+
     [SerializeField]
     private Vector3 originalPos;
 
@@ -24,6 +26,8 @@ public class SpiderConstraint : MonoBehaviour
         originalPos = transform.position;
     }
 
+    //Using four different cubes for each of the legs to display a support for centre of mass, all four cubes move with the body and each leg needs to be within a certain distance within the cube
+    //If not they will move towards to cube using linear interpolation.
     // Update is called once per frame
     void FixedUpdate()
     {

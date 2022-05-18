@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
+    //This script controls the ui of the player interact. When the player hovers over an interactable object, text will appear.
     public GameObject player;
     public Camera cam;
 

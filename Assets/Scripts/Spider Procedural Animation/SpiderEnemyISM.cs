@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class SpiderEnemyISM : MonoBehaviour
 {
+    //OLD SCRIPT, NOT IN USE.
     [Header("Set objects")]
     public GameObject grenade;
     public GameObject gun;
