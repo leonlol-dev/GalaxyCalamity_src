@@ -12,7 +12,9 @@ It has a number of features implemented:
 - Performance Testing Environment (For the procedural animation to record how this technique impacts performance)
 
 Download the playable version here: https://leonlol-dev.itch.io/galaxy-calamity 
+
 or
+
 Download this repo and play within the Unity Editor.
 
 ## Stack
