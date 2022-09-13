@@ -11,6 +11,10 @@ It has a number of features implemented:
 - Visuals rendered in Unity's Universal Render Pipeline
 - Performance Testing Environment (For the procedural animation to record how this technique impacts performance)
 
+Download the playable version here: https://leonlol-dev.itch.io/galaxy-calamity 
+or
+Download this repo and play within the Unity Editor.
+
 ## Stack
 - [NavMeshComponent](https://github.com/Unity-Technologies/NavMeshComponents) - Unity's NavMeshComponents used for NavMeshAgents.
 
