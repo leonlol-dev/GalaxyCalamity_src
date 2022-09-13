@@ -18,5 +18,18 @@ It has a number of features implemented:
 
 (click the thumbnail to open the YouTube video)
 
+## Procedural Animation
+
+- Robotic Spider
+https://user-images.githubusercontent.com/59918677/190015829-cfb0d2f1-6de1-4be6-a292-24c2dae5f802.mp4
+
+
+- Robot Worm
+https://user-images.githubusercontent.com/59918677/190016125-1dbe17f7-ba31-4dbe-8b01-47de941f6e98.mp4
+
+
+
+
+
 ## Website
 [leonlol-dev.github.io](https://leonlol-dev.github.io/Portfolio/index.html)
