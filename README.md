@@ -5,10 +5,11 @@ This project was made in the Unity Game Engine(ver. 2021.2.1f). The game is a fi
 It has a number of features implemented:
 
 - Procedural Animation (Using Inverse Kinematics and Animation Rigging)
-- State Based AI System
+- State Based AI System (Finite State Machine)
 - Unity's Shader Graph
 - Weaponary and Upgrade System
 - Visuals rendered in Unity's Universal Render Pipeline
+- Performance Testing Environment (For the procedural animation to record how this technique impacts performance)
 
 ## Stack
 - [NavMeshComponent](https://github.com/Unity-Technologies/NavMeshComponents) - Unity's NavMeshComponents used for NavMeshAgents.
