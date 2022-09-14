@@ -38,7 +38,7 @@ https://user-images.githubusercontent.com/59918677/190015829-cfb0d2f1-6de1-4be6-
 
 https://user-images.githubusercontent.com/59918677/190016125-1dbe17f7-ba31-4dbe-8b01-47de941f6e98.mp4
 
-##AI Behaviour
+## AI Behaviour
 
 - Finite State Machine System
 
