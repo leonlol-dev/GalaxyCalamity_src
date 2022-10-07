@@ -15,7 +15,7 @@ Download the playable version here: https://leonlol-dev.itch.io/galaxy-calamity
 
 or
 
-Download this repo and play within the Unity Editor.
+Download this repo's release build and execute galaxycalamity.exe.
 
 ## Stack
 - [NavMeshComponent](https://github.com/Unity-Technologies/NavMeshComponents) - Unity's NavMeshComponents used for NavMeshAgents.
