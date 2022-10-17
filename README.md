@@ -27,19 +27,19 @@ Download this repo's release build and execute galaxycalamity.exe.
 
 ## Procedural Animation
 
-Achieving procedural animation for the spider boss of this project was to first utilise Unity’s Animation Rigging package, once we have the package installed we need to apply some of the features to our spider model. Firstly, the spider model requires a rig; Rigs acts as a container for source objects and constraints that modify the animated hierarchy’s pose, there’s a variable we can change called weight, which controls the contribution of weight to the final pose (Unity 3D, 2022).  Once the rig is setup, the Inverse Kinematic two boned constraint is then applied to each leg. 
-
 - Robotic Spider
 
 
 https://user-images.githubusercontent.com/59918677/190015829-cfb0d2f1-6de1-4be6-a292-24c2dae5f802.mp4
 
-The movement of the worm uses Cinemachine features which originally was meant for cameras within Unity, we use the Cinemachine Dolly Cart and Cinemachine Dolly Track; these features were meant to move cameras around during a cutscene in a cinematic style by using dolly path which is an array of waypoints within a scene and the dolly cart is a component which constrains the transform of the game object to the path (Unity, 2022). However, in this project we’ve reinvented the purpose of these two features for the movement of the worm (See Figure 13). The worm contains a script that has a FindPath() function, this function finds two random vector3 locations, these two location will be the start and end of the track. And resets the position of the worm after finding a path. The dolly cart is placed on the worms model, a Move() function is used to move the dolly cart by having a IEnumerator function which the dolly cart will follow the path then finds a new path at the end of the function, using the yield return new WaitUntil() function, the script waits until the position of the worm is at the end of the track. Once its at the end FindPath() function is called.
+Achieving procedural animation for the spider boss of this project was to first utilise Unity’s Animation Rigging package, once we have the package installed we need to apply some of the features to our spider model. Firstly, the spider model requires a rig; Rigs acts as a container for source objects and constraints that modify the animated hierarchy’s pose, there’s a variable we can change called weight, which controls the contribution of weight to the final pose (Unity 3D, 2022).  Once the rig is setup, the Inverse Kinematic two boned constraint is then applied to each leg. 
 
 - Robot Worm
 
 
 https://user-images.githubusercontent.com/59918677/190016125-1dbe17f7-ba31-4dbe-8b01-47de941f6e98.mp4
+
+The movement of the worm uses Cinemachine features which originally was meant for cameras within Unity, we use the Cinemachine Dolly Cart and Cinemachine Dolly Track; these features were meant to move cameras around during a cutscene in a cinematic style by using dolly path which is an array of waypoints within a scene and the dolly cart is a component which constrains the transform of the game object to the path (Unity, 2022). However, in this project we’ve reinvented the purpose of these two features for the movement of the worm (See Figure 13). The worm contains a script that has a FindPath() function, this function finds two random vector3 locations, these two location will be the start and end of the track. And resets the position of the worm after finding a path. The dolly cart is placed on the worms model, a Move() function is used to move the dolly cart by having a IEnumerator function which the dolly cart will follow the path then finds a new path at the end of the function, using the yield return new WaitUntil() function, the script waits until the position of the worm is at the end of the track. Once its at the end FindPath() function is called.
 
 ## AI Behaviour
 
