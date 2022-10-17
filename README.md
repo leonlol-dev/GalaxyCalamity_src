@@ -44,7 +44,7 @@ https://user-images.githubusercontent.com/59918677/190016125-1dbe17f7-ba31-4dbe-
 
 ![statemachineumldiagram](https://user-images.githubusercontent.com/59918677/196291960-b3f4785e-03a9-4aff-b976-1da62574d565.png)
 
-
+To build the states of the state machine, using abstraction to build a base or prototype abstract state that all concrete states derive from. This allows developers not to worry about the inner complexities of the base state and just worry about what each state individually does, increasing efficiency for development. The abstract state defines methods that will be used by all states, including: Start, Enter, Update, Fixed Update and OnTriggerEnter. Furthermore, we can use an abstract state as a variable within the state machine as the current state.
 
 
 ## Website
