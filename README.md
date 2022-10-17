@@ -46,6 +46,10 @@ https://user-images.githubusercontent.com/59918677/190016125-1dbe17f7-ba31-4dbe-
 
 To build the states of the state machine, using abstraction to build a base or prototype abstract state that all concrete states derive from. This allows developers not to worry about the inner complexities of the base state and just worry about what each state individually does, increasing efficiency for development. The abstract state defines methods that will be used by all states, including: Start, Enter, Update, Fixed Update and OnTriggerEnter. Furthermore, we can use an abstract state as a variable within the state machine as the current state.
 
+Concrete States are the individual states that have their own behaviours and qualities. They can contain their own methods and variables, additionally they will have the abstract state’s methods as well. A drawback to using this method is that since the states are using the state class and they do not have access to the MonoBehaviour class functionality, which is why we need to pass in data from a MonoBehaviour class. A MonoBehaviour class is the base class in which every Unity Script derives from (Unity, 2022). The actual state machine will be of class MonoBehaviour within Unity. 
+The actual MonoBehaviour class state machine does a number of things to allow this state machine to work, firstly it creates instances of the concrete states. Additionally, it passes data to the current state. Furthermore, it holds the reference to the current state – as a state machine can only be using one state at a time. It also where the transition function resides meaning that all states can transition as all states have access to the function.
+
+
 
 ## Website
 [leonlol-dev.github.io](https://leonlol-dev.github.io/Portfolio/index.html)
